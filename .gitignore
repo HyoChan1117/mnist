@@ -1,2 +1,11 @@
 # 가상환경
 venv
+
+# claude
+.claude
+
+# .vscode
+.vscode
+
+# data
+data
