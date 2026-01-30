@@ -1,6 +1,9 @@
+torch
+torchvision
 numpy
 pillow
 flask
 onnxruntime
 opencv-python
+onnxscript
 gunicorn
