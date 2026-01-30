@@ -53,7 +53,7 @@ def preprocess_image(file) -> np.ndarray:
 app = Flask(__name__, static_url_path="/contents", static_folder="static")
 
 
-# 테스트용 업로드 폼 
+# 테스트용 업로드 폼
 INDEX_HTML = """
 <!doctype html>
 <title>MNIST ONNX Runtime Demo</title>
@@ -62,6 +62,8 @@ INDEX_HTML = """
   <input type=file name=file>
   <input type=submit value="Predict">
 </form>
+<br>
+<a href="/contents/mnist.html"><button>손글씨 캔버스로 이동</button></a>
 """
 
 
