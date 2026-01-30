@@ -11,7 +11,7 @@ import cv2
 # onnxruntime 로드가 쉬움
 session = ort.InferenceSession(   # 1. 모듈을 불러와서 하나의 객체 생성(추론 엔진을 논리적으로 생성)
     "models/mnist.onnx",  # 2. 첫 번째 인자: ONNX 모델 경로
-    providers=["CPUExecutionProvider", "TRTExecutionProvider"],
+    providers=["CUDAExecutionProvider", "CPUExecutionProvider"],
 )
 
 INPUT_NAME = "image"   # ONNX 입력 이름 (export 시 지정한 이름)
@@ -111,6 +111,7 @@ def predict():
 
 
 if __name__ == "__main__":
-    print(app.static_folder)
-    print(app.static_url_path)
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
