@@ -31,10 +31,42 @@ Web 기반 손글씨 숫자 인식 AI 서비스 구축
 
 ## 기능
 
-- CNN 모델 학습 (PyTorch)
-- ONNX 변환 및 ONNX Runtime 추론
-- Flask REST API (`/predict`)
-- 웹 캔버스에서 직접 손글씨 입력 및 인식
+### 1. CNN 모델 학습 및 ONNX 변환
+
+PyTorch를 이용해 CNN 모델을 학습하고,  
+추론 및 배포를 위해 ONNX 형식으로 변환합니다.
+
+![모델 학습 및 ONNX 변환](images/train_onnx.png)
+
+---
+
+### 2. 실시간 추론
+
+변환된 ONNX 모델을 ONNX Runtime으로 로드하여  
+입력된 숫자를 실시간으로 예측합니다.
+
+![모델 추론 결과](images/inference.png)
+
+---
+
+### 3. Flask REST API
+
+Flask 기반 REST API를 구축하여  
+이미지 입력을 받아 예측 결과를 JSON 형태로 반환합니다.
+
+![Flask API 동작 화면](images/flask_api.png)
+
+---
+
+### 4. 웹 캔버스 손글씨 입력 및 인식
+
+웹 페이지의 Canvas에서 직접 숫자를 작성하고  
+AI 모델이 즉시 인식 결과를 출력합니다.
+
+🎥 데모 영상  
+![웹 캔버스 데모](images/demo.gif)
+
+---
 
 ## 프로젝트 구조
 
@@ -49,7 +81,12 @@ mnist/
 │   ├── mnist.pth        # PyTorch 모델
 │   └── mnist.onnx       # ONNX 모델
 ├── requirements.txt
-└── render.yaml          # Render 배포 설정
+├── render.yaml          # Render 배포 설정
+└── images/
+    ├── train_onnx.png
+    ├── inference.png
+    ├── flask_api.png
+    └── demo.gif
 ```
 
 ## 설치
@@ -126,3 +163,35 @@ Flatten → Linear(3136, 128) → ReLU → Linear(128, 10)
 - **추론**: ONNX Runtime
 - **서버**: Flask, Gunicorn
 - **배포**: Render
+
+---
+
+## 구현 결과 및 개선 사항
+
+### 구현 결과
+
+- CNN 기반 고정확도 손글씨 숫자 인식 모델 구축  
+- Web 서비스 상에서 실시간 숫자 인식 기능 구현  
+
+AI와 Web을 연동한 실시간 인식 시스템 완성
+
+---
+
+### 개선 사항
+
+- 입력 이미지 중심화 전처리 추가  
+- 학습 시 평행 이동 데이터 증강 적용  
+
+위치 변화의 영향을 덜 받는 인식 모델로 성능 개선
+
+---
+
+## 성장 포인트
+
+AI 모델 개발 이해 및 구현 경험  
++  
+Web 서비스와의 연동 및 배포 경험  
+
+=  
+
+기술을 통합하여 실제 서비스 형태로 완성하는 개발 역량 향상
